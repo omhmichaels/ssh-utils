@@ -2,8 +2,6 @@
 # Title: generate-keys.sh
 
 CONFIG=${1:- "~/.ssh/accounts.json"}
-printf "\nPLEASE ENTER A PASSWORD FOR SSH KEYS:\n";
-read -s GOODIES;
 
 
 # Use jq to get host from json config
@@ -31,15 +29,12 @@ do
     printf "USER:\n\t$user\n"
     
     printf "\nKEYNAME:\n\t $KEYNAME\n"
-    printf "\nCREATING SSH KEY:\n\t $KEYNAME\n"
-    ssh-keygen -t rsa -b 4096 -P "${GOODIES}" -f ~/.ssh/$KEYNAME;
-    # TODO: GET PASSWORD TO PASS TO SSH-ADD
-    echo $GOODIES |ssh-add -K ~/.ssh/$KEYNAME;
+
+    printf "\nRemoving SSH Identity\n" && ssh-add -d ~/.ssh/$KEYNAME;
+    printf "\nDeleting SSH KEY:\n\t $KEYNAME\n" && rm -rf  ~/.ssh/$KEYNAME* ;
 
 
-    printf "\nAdding key to keychain\n"
-   
-    printf "\nFINISHED: \n\tUser: $user\n\tKey: $KEYNAME.\n----------\n"
+    printf "\nFINISHED DELETING ITEM: \n\tUser: $user\n\tKey: $KEYNAME.\n----------\n"
 
 
    
