@@ -1,0 +1,26 @@
+[
+    {
+        "host":"github",
+        "user":"docker"
+    },    
+    
+    {
+        "host":"github",
+        "user":"conss"
+    },    
+    
+    {
+        "host":"github",
+        "user":"kid"
+    },    
+    
+    {
+        "host":"aws",
+        "user":"ec2"
+    },    
+    
+    {
+        "host":"aws",
+        "user":"terraform"
+    }
+]
